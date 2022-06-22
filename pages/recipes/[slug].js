@@ -58,12 +58,14 @@ export async function getStaticProps({ params }) {
 // https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
 const renderOptions = {
   renderNode: {
-    [INLINES.EMBEDDED_ENTRY]: (node, children) => {
-      if (node.data.target.sys.contentType.sys.id === "citation") {
+    [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
+      console.log("hey there")
+      console.log(node)
+      if (node.data.target.sys.contentType.sys.id === "ucsref") {
         return (
           <div className={'my-citation'}>
             I'm text in React, here's the citation name from Contentful:
-            {node.data.target.fields.name}
+            {node.data.target.fields.title}
           </div>
         )
       }
