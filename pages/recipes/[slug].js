@@ -3,6 +3,10 @@ import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Skeleton from "../../components/Skeleton";
 
+// this was added to try and bring in citations
+// https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_KEY,
@@ -28,7 +32,11 @@ export const getStaticPaths = async () => {
 export async function getStaticProps({ params }) {
   const { items } = await client.getEntries({
     content_type: "recipe",
-    'fields.slug': params.slug
+    'fields.slug': params.slug,
+    
+    // this was added to try and bring in citations
+    // https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
+    include: 10
   });
 
   if (!items.length) {
@@ -43,6 +51,23 @@ export async function getStaticProps({ params }) {
   return {
     props: { recipe: items[0]},
     revalidate: 1
+  }
+}
+
+// this was added to try and bring in citations
+// https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
+const renderOptions = {
+  renderNode: {
+    [INLINES.EMBEDDED_ENTRY]: (node, children) => {
+      if (node.data.target.sys.contentType.sys.id === "citation") {
+        return (
+          <div className={'my-citation'}>
+            I'm text in React, here's the citation name from Contentful:
+            {node.data.target.fields.name}
+          </div>
+        )
+      }
+    }
   }
 }
 
@@ -73,7 +98,7 @@ export default function RecipeDetails({ recipe }) {
 
       <div className="method">
         <h3>Method:</h3>
-        <div>{documentToReactComponents(method)}</div>
+        <div>{documentToReactComponents(method, renderOptions)}</div>
       </div>
 
       <style jsx>{`
