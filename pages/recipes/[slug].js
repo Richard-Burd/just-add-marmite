@@ -2,6 +2,7 @@ import { createClient } from "contentful";
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Skeleton from "../../components/Skeleton";
+import Reference from "../../components/Reference";
 
 // this was added to try and bring in citations
 // https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
@@ -14,7 +15,7 @@ const client = createClient({
 
 export const getStaticPaths = async () => {
   const res = await client.getEntries({
-    content_type: "recipe",
+    content_type: "recipe", // this key & value are both from Contentful
   });
 
   const paths = res.items.map(item => {
@@ -33,10 +34,6 @@ export async function getStaticProps({ params }) {
   const { items } = await client.getEntries({
     content_type: "recipe",
     'fields.slug': params.slug,
-    
-    // this was added to try and bring in citations
-    // https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
-    include: 10
   });
 
   if (!items.length) {
@@ -49,7 +46,7 @@ export async function getStaticProps({ params }) {
   }
 
   return {
-    props: { recipe: items[0]},
+    props: { recipe: items[0] },
     revalidate: 1
   }
 }
@@ -61,22 +58,26 @@ const renderOptions = {
     [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
       console.log("hey there")
       console.log(node)
+      const myRefName = node.data.target.fields.title
       if (node.data.target.sys.contentType.sys.id === "ucsref") {
         return (
+          <>
+          <Reference myRefName={myRefName}/>
           <div className={'my-citation'}>
             I'm text in React, here's the citation name from Contentful:
             <div className={"alhadaf"}>
               {node.data.target.fields.title}
             </div>
             <style jsx>{`
-                .my-citation {
-                  color: blue
-                }
-                .alhadaf {
-                  color: red
-                }
-              `}</style>
+              .my-citation {
+                color: blue
+              }
+              .alhadaf {
+                color: red
+              }
+            `}</style>
           </div>
+          </>
         )
       }
     }
@@ -103,8 +104,8 @@ export default function RecipeDetails({ recipe }) {
         <p>Takes about { cookingTime } mins to cook</p>
         <h3>Ingredients:</h3>
 
-        {ingredients.map(ing => (
-          <span key={ing}>{ ing }</span>
+        {ingredients.map(ingredients => (
+          <span key={ingredients}>{ ingredients }</span>
         ))}
       </div>
 
