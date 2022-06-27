@@ -65,7 +65,14 @@ const renderOptions = {
         return (
           <div className={'my-citation'}>
             I'm text in React, here's the citation name from Contentful:
-            {node.data.target.fields.title}
+            <div className="alhadaf">
+              {node.data.target.fields.title}
+              <style jsx>{`
+                .alhadaf {
+                  color: red
+                }
+              `}</style>
+            </div>
           </div>
         )
       }
