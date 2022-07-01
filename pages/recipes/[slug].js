@@ -26,6 +26,10 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
+
+    // https://youtu.be/V4SVNleMitE
+    // if false, you get 404 page.
+    // if true, you render RecipeDetails page with new Contentful data.
     fallback: true,
   }
 }
@@ -47,7 +51,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: { recipe: items[0] },
-    revalidate: 1
+    revalidate: 2 // Next.js will check Contentful for changes every 2 seconds
   }
 }
 
@@ -85,6 +89,9 @@ const renderOptions = {
 }
 
 export default function RecipeDetails({ recipe }) {
+  // https://youtu.be/V4SVNleMitE?t=206
+  // if no page exists in the current build to handle a new item created in Contentful,
+  // display the Skeleton component as a fallback until Next.js can build the ne new Contentful item.
   if (!recipe) return <Skeleton />
 
   const { featuredImage, title, cookingTime, ingredients, method } = recipe.fields;
