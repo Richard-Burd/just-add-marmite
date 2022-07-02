@@ -40,6 +40,11 @@ export async function getStaticProps({ params }) {
     'fields.slug': params.slug,
   });
 
+  // if a recipe does not exist, the user is taken to the <Skeleton /> fallback page.
+  // the fallback page then re-runs this getStaticProps function to try and get the
+  // "items" data again using the slug. the "items" here is an array, so if it got
+  // the data, it will have a length of 1; if not, then it doesn't exist.
+  // the user would then need to be redirected to the homepage
   if (!items.length) {
     return {
       redirect: {

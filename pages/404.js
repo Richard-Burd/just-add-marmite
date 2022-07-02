@@ -5,11 +5,13 @@ import { useRouter } from 'next/router'
 const NotFound = () => {
   const router = useRouter()
 
+  // useEffect fires a function when the component first renders.
   useEffect(() => {
+    // redirects the user after 4000 milliseconds
     setTimeout(() => {
       router.push('/')
     }, 4000)
-  }, [])
+  }, []) // dependency array has no dependencies
 
   return (
     <div className="not-found">
