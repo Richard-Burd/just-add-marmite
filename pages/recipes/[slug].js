@@ -3,10 +3,14 @@ import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Skeleton from "../../components/Skeleton";
 import Reference from "../../components/Reference";
+import References from "../../components/References";
 
 // this was added to try and bring in citations
 // https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+
+// this stores the list of references so we can display them at the bottom of the page
+let referenceList = [];
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -69,9 +73,17 @@ const renderOptions = {
       console.log(node)
       const myRefName = node.data.target.fields.title
       if (node.data.target.sys.contentType.sys.id === "ucsref") {
+
+        referenceList.push(myRefName);
+
+        // I need a hook that will sort all of these first, then render them
+        // blow on line 86.
+        referenceList.sort();
+
         return (
           <>
           <Reference myRefName={myRefName}/>
+          <div>I'm this order displayed: [{referenceList.indexOf(myRefName)}]</div>
           <div className={'my-citation'}>
             I'm text in React, here's the citation name from Contentful:
             <div className={"alhadaf"}>
@@ -125,6 +137,8 @@ export default function RecipeDetails({ recipe }) {
         <h3>Method:</h3>
         <div>{documentToReactComponents(method, renderOptions)}</div>
       </div>
+
+      <References referenceList={referenceList}/>
 
       <style jsx>{`
         h2,h3 {
