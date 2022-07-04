@@ -4,13 +4,11 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Skeleton from "../../components/Skeleton";
 import Reference from "../../components/Reference";
 import References from "../../components/References";
+import { useEffect } from "react";
 
 // this was added to try and bring in citations
 // https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
-
-// this stores the list of references so we can display them at the bottom of the page
-let referenceList = [];
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -64,6 +62,9 @@ export async function getStaticProps({ params }) {
   }
 }
 
+// this stores the list of references so we can display them at the bottom of the page
+let referenceList = []; // NOTE: this appears even on recipes with no references until you do a refresh
+
 // this was added to try and bring in citations
 // https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
 const renderOptions = {
@@ -106,6 +107,12 @@ const renderOptions = {
 }
 
 export default function RecipeDetails({ recipe }) {
+
+  // this deletes the current list of references every time the component is rendered
+  useEffect(() => { // without it, the references would keep stacking up
+    referenceList = [];
+  })
+
   // https://youtu.be/V4SVNleMitE?t=206
   // if no page exists in the current build to handle a new item created in Contentful,
   // display the Skeleton component as a fallback until Next.js can build the ne new Contentful item.

@@ -31,23 +31,3 @@ const References = (props) => {
 }
  
 export default References;
-
-/*
-
-    <div className="recipe-list">
-      {recipes.map(function(recipe){
-        if (!recipe.fields.slug.startsWith("cheesy")) {
-          return <RecipeCard key={recipe.sys.id} recipe={recipe} />
-        }
-      })}
-
-      <style jsx>{`
-        .recipe-list {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: 20px 60px;
-        }
-      `}</style>
-    </div>
-
-*/
