@@ -69,7 +69,7 @@ export async function getStaticProps({ params }) {
 const renderOptions = {
   renderNode: {
     [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
-      console.log("hey there")
+      //console.log("hey there")
       console.log(node)
       const myRefName = node.data.target.fields.title
       if (node.data.target.sys.contentType.sys.id === "ucsref") {

@@ -11,16 +11,17 @@ const References = (props) => {
   // this just sorts the references alphabetically,
   // we also need to delete redundant references
   const referenceList = props.referenceList.sort();
+  let uniqueReferences = [...new Set(referenceList)];
 
   return (  
     <div>
       <hr color="black"></hr>
       <p>I'm a list of references at the bottom of the page listed alphabetically</p>
       <div className="references-list">
-        {referenceList.map(function(reference){
+        {uniqueReferences.map(function(reference){
           return (
-            <div>
-              [{referenceList.indexOf(reference) + 1}] {reference}
+            <div key={uniqueReferences.indexOf(reference)}>
+              [{uniqueReferences.indexOf(reference) + 1}] {reference}
             </div>
           )
         })}
