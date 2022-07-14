@@ -1,5 +1,6 @@
 import { createClient } from "contentful";
 import RecipeCard from "../components/RecipeCard";
+import DropdownBox from "../components/DropdownBox";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -13,30 +14,32 @@ export async function getStaticProps() {
     props: {
       recipes: res.items,
       revalidate: 1,
-    }
-  }
-
+    },
+  };
 }
 
 export default function Recipes({ recipes }) {
   console.log(recipes[0].fields.slug);
   return (
-    <div className="recipe-list">
-      {recipes.map(function(recipe){
-        if (!recipe.fields.slug.startsWith("cheesy")) {
-          return <RecipeCard key={recipe.sys.id} recipe={recipe} />
-        }
-      })}
+    <>
+      <div className="recipe-list">
+        {recipes.map(function (recipe) {
+          if (!recipe.fields.slug.startsWith("cheesy")) {
+            return <RecipeCard key={recipe.sys.id} recipe={recipe} />;
+          }
+        })}
 
-      <style jsx>{`
-        .recipe-list {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: 20px 60px;
-        }
-      `}</style>
-    </div>
-  )
+        <style jsx>{`
+          .recipe-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px 60px;
+          }
+        `}</style>
+      </div>
+      <DropdownBox />
+    </>
+  );
 }
 
 /*
