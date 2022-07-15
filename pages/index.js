@@ -1,6 +1,7 @@
 import { createClient } from "contentful";
 import RecipeCard from "../components/RecipeCard";
 import DropdownBox from "../components/DropdownBox";
+import StyledModularComponent from "../components/StyledModularComponent";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -37,6 +38,8 @@ export default function Recipes({ recipes }) {
           }
         `}</style>
       </div>
+      <StyledModularComponent />
+      <br></br>
       <DropdownBox />
     </>
   );
