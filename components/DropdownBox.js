@@ -2,6 +2,8 @@
 // Task: Rebuild this in React: https://alpine-ejs-testbed.herokuapp.com/ucs-about
 // Repo for original Alpine + ejs: https://github.com/Richard-Burd/alpine-js-sandbox
 
+import Image from "next/image";
+
 const DropdownBox = () => {
   return (
     <>
@@ -25,9 +27,19 @@ const DropdownBox = () => {
           </div>
         </div>
         <div className="m-4 flex items-end justify-center">
-          <div className="bg-red-500 h-4 w-6"></div>
-          <div className="bg-blue-500 h-8 w-6"></div>
-          <div className="bg-green-500 h-12 w-6"></div>
+          <div className="bg-red-500 sm:bg-yellow-500 lg:bg-red-300 h-12 mx-4 w-12 rounded"></div>
+          <div className="bg-blue-500 sm:bg-yellow-500 lg:bg-red-300 h-12 mx-4 w-12 rounded"></div>
+          <div className="bg-green-500 sm:bg-yellow-500 lg:bg-red-300 h-12 mx-4 w-12 rounded"></div>
+        </div>
+        <div>
+          <span>text on top</span>
+          <span className="block">text on bottom (cuz of block)</span>
+          <Image
+            src="/bnb.jpg"
+            width={200}
+            height={400}
+            className="w-full h-32 sm:h-48 object-cover"
+          />
         </div>
       </div>
       <style jsx>{`
