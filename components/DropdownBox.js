@@ -10,9 +10,25 @@ const DropdownBox = () => {
           href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
           rel="stylesheet"
         ></link>
-        <h3 className="text-blue-600 non-tailwind-class">
-          Dropdown Box w/TailwindCSS & JSX Inline Styling
-        </h3>
+        <style>
+          @import
+          url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        </style>
+        <div className="bg-red-100 border-red-400 border-4 p-2 mt-2 ">
+          <h3 className="text-blue-600 non-tailwind-class">
+            Dropdown Box w/TailwindCSS & JSX Inline Styling
+          </h3>
+          <div className="flex justify-between text-gray-500 font-mono my-imported-font">
+            <p>This is a paragraph</p>
+            <p>This is a paragraph</p>
+            <p>This is a paragraph</p>
+          </div>
+        </div>
+        <div className="m-4 flex items-end justify-center">
+          <div className="bg-red-500 h-4 w-6"></div>
+          <div className="bg-blue-500 h-8 w-6"></div>
+          <div className="bg-green-500 h-12 w-6"></div>
+        </div>
       </div>
       <style jsx>{`
         h2,
@@ -21,7 +37,11 @@ const DropdownBox = () => {
           letter-spacing: 5px;
         }
         .non-tailwind-class {
-          background-color: white;
+          // background-color: white;
+        }
+        .my-imported-font {
+          font-family: "Nunito", sans-serif;
+          font-weight: 900;
         }
       `}</style>
     </>
