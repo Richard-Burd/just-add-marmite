@@ -15,6 +15,11 @@ const References = (props) => {
   return (
     <div>
       <hr color="black"></hr>
+
+      <div class="py-2">
+        <div class="w-full border-t border-4 border-gray-900"></div>
+      </div>
+
       <p>
         I'm an alphabetical list of references in the &nbsp; &#x2039;References
         /&rsaquo; &nbsp; component

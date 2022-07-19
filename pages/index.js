@@ -2,6 +2,7 @@ import { createClient } from "contentful";
 import RecipeCard from "../components/RecipeCard";
 import DropdownBox from "../components/DropdownBox";
 import StyledModularComponent from "../components/StyledModularComponent";
+import HodgePodge from "../components/HodgePodge";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -40,6 +41,7 @@ export default function Recipes({ recipes }) {
       </div>
       <StyledModularComponent />
       <br></br>
+      <HodgePodge />
       <DropdownBox />
     </>
   );

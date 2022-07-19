@@ -9,11 +9,6 @@ const StyledModularComponent = () => {
   return (
     <>
       <div>
-        <link
-          // here we're using a CDN to import TailwindCSS just to get started
-          href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-          rel="stylesheet"
-        ></link>
         <h3 className="text-blue-600 non-tailwind-class">
           Styled Modular Component w/TailwindCSS & JSX Inline Styling
         </h3>
