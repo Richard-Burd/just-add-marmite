@@ -1,6 +1,6 @@
 import { createClient } from "contentful";
 import RecipeCard from "../components/RecipeCard";
-import DropdownBox from "../components/DropdownBox";
+import UCSDropdownBox from "../components/UCSDropdownBox";
 import StyledModularComponent from "../components/StyledModularComponent";
 import HodgePodge from "../components/HodgePodge";
 
@@ -42,7 +42,29 @@ export default function Recipes({ recipes }) {
       <StyledModularComponent />
       <br></br>
       <HodgePodge />
-      <DropdownBox />
+      <UCSDropdownBox
+        title={`Why the name "Urban Cruise Ship?"`}
+        description={
+          <>
+            <p className="pb-4">
+              This comes from the concept of taking something that works well
+              now, due to good design, and applying that elsewhere to solve
+              problems. E.g. urban problems could be reduced if cities were
+              designed more like cruise ships: attractive and enjoyable, but
+              compact and with all residents' needs met within walking distance.
+            </p>
+            <p className="pb-4">
+              This is a classic application of design-approach transfer. Urban
+              Cruise Ship also explores other topics where this might work well.{" "}
+            </p>
+            <p>
+              Like a real ship, Urban Cruise Ship is navigational. Its crew
+              takes visitors to numerous ports of entry into different ways of
+              solving problems.{" "}
+            </p>
+          </>
+        }
+      />
     </>
   );
 }
