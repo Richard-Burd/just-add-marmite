@@ -24,8 +24,9 @@ export const getStaticPaths = async () => {
   });
 
   const paths = res.items.map((item) => {
+    const slug = item?.fields?.slug || "";
     return {
-      params: { slug: item.fields.slug },
+      params: { slug },
     };
   });
 
@@ -72,22 +73,16 @@ let referenceList = []; // NOTE: this appears even on recipes with no references
 // https://www.contentful.com/blog/2021/04/14/rendering-linked-assets-entries-in-contentful/
 
 export default function RecipeDetails({ recipe }) {
-  console.log(recipe);
-
-  // I built this with Chris Bloom on 7/6/2022
-  const refs = recipe.fields.method.content
+  const refs = (recipe?.fields?.method?.content || [])
     .filter((item) => item.nodeType === "embedded-entry-block")
     .map((item) => item.data.target.fields.title)
     .sort();
-  console.log(refs);
 
   const renderOptions = {
     renderNode: {
       [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
-        //console.log("hey there")
-        //console.log(node)
-        const myRefName = node.data.target.fields.title;
-        if (node.data.target.sys.contentType.sys.id === "ucsref") {
+        const myRefName = node.data?.target?.fields?.title;
+        if (node.data?.target.sys.contentType.sys.id === "ucsref") {
           //referenceList.push(myRefName); Deleted with Chris Bloom on 7/6/2022
 
           // I need a hook that will sort all of these first, then render them
@@ -105,7 +100,9 @@ export default function RecipeDetails({ recipe }) {
               </div>
               <div className={"my-citation"}>
                 I'm text in React, here's the citation name from Contentful:
-                <div className={"alhadaf"}>{node.data.target.fields.title}</div>
+                <div className={"alhadaf"}>
+                  {node.data?.target?.fields?.title}
+                </div>
                 <style jsx>{`
                   .my-citation {
                     color: blue;
