@@ -6,6 +6,17 @@ export default function Layout({ children }) {
   return (
     <div className="layout">
       <header>
+        {/* <!-- Alpine Plugins https://alpinejs.dev/plugins/collapse --> */}
+        <script
+          defer
+          src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"
+        ></script>
+
+        {/* <!-- Alpine Core --> */}
+        <script
+          defer
+          src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+        ></script>
         <script src="https://cdn.tailwindcss.com"></script>
         <Link href="/">
           <a>

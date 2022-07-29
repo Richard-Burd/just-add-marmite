@@ -3,6 +3,7 @@ import RecipeCard from "../components/RecipeCard";
 import UCSDropdownBox from "../components/UCSDropdownBox";
 import StyledModularComponent from "../components/StyledModularComponent";
 import HodgePodge from "../components/HodgePodge";
+import UCSDisclosure from "../components/UCSDisclosure";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -65,6 +66,9 @@ export default function Recipes({ recipes }) {
           </>
         }
       />
+      <br></br>
+      <UCSDisclosure />
+      <br></br>
     </>
   );
 }

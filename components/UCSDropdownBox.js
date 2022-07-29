@@ -50,9 +50,9 @@ const UCSDropdownBox = (props) => {
             </div>
           </button>
           <div className="animated-dropdown">
-            <div className="text-sm text-gray-900 px-8 py-4 text-justify">
+            <button className="text-sm text-gray-900 px-8 py-4 text-justify">
               <span>{props.description}</span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
