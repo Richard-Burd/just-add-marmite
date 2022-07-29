@@ -31,8 +31,7 @@ const FramerMotionTest = () => {
             animate={{ opacity: 1, scale: 1, originY: 0 }}
             exit={{ opacity: 0, scaleX: 0.85, scaleY: 0 }}
           >
-            This is the text that is inside the box, I would really like to see
-            how it anumates
+            This is the text
           </motion.div>
         )}
       </AnimatePresence>

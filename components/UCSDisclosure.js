@@ -8,7 +8,7 @@ const UCSDisclosure = () => {
         <div className="bg-slate-200 elliptical-geometry">
           <Disclosure>
             <Disclosure.Button className="w-full z-10">
-              <div className="bg-slate-400 elliptical-geometry p-2 w-full z-10">
+              <div className="bg-slate-400 elliptical-geometry p-2 w-full relative z-10">
                 This is the Button
               </div>
             </Disclosure.Button>
@@ -22,7 +22,7 @@ const UCSDisclosure = () => {
             >
               <Disclosure.Panel>
                 <div className="m-2 p-2 z-0">
-                  <p className="bg-slate-300 elliptical-geometry -m-4 p-4 z-0">
+                  <p className="bg-slate-300 elliptical-geometry -m-4 p-4 relative z-0">
                     This is the Panel, there is some text inside of it just to
                     fill up some space for testing purposes...This is a really
                     long piece of text, it needs to be in order to see the
