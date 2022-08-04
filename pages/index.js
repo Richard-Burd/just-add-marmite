@@ -4,8 +4,8 @@ import UCSDropdownBox from "../components/UCSDropdownBox";
 import StyledModularComponent from "../components/StyledModularComponent";
 import HodgePodge from "../components/HodgePodge";
 import UCSDisclosure from "../components/UCSDisclosure";
-import FramerMotionTest from "../components/FramerMotionTest";
 import UCSFMDropdown from "../components/UCSFMDropdown";
+import NNFMLessonOne from "../components/NNFMLessonOne";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -71,9 +71,12 @@ export default function Recipes({ recipes }) {
       <br></br>
       <UCSDisclosure />
       <br></br>
-      <FramerMotionTest />
-      <br></br>
       <UCSFMDropdown />
+      <br></br>
+      <NNFMLessonOne />
+      <div className="bg-red-300">
+        <div className="flex justify-center">This is text</div>
+      </div>
     </>
   );
 }

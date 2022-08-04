@@ -45,7 +45,7 @@ const UCSDropdownBox = (props) => {
               text-xl
               "
           >
-            <div class="font-bold mx-2">
+            <div>
               <span>{props.title}</span>
             </div>
           </button>
