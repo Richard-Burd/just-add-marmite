@@ -44,13 +44,25 @@ const NNFMLessonOne = () => {
         This is a button
       </motion.button>
       <div>
+        {/* NOTE: "whileHover" doesn't work on Google Chrome */}
+        {/* https://github.com/framer/motion/issues/880 */}
         <motion.button
           whileHover={{
-            scale: 1,
+            scale: 1.8,
+            textShadow: "0px 0px 8px rgb(117, 97, 90)",
+            boxShadow: "0px 0px 8px rgb(117, 97, 90)",
+            color: "#ff2994",
+            originX: 0,
+          }}
+          transition={{
+            type: "spring",
+            stiffness: 300,
           }}
           whileTap={{ scale: 0.8 }}
         >
-          This is another button
+          <p className="border-2 border-yellow-900 p-2">
+            This is another button
+          </p>
         </motion.button>
       </div>
     </>
