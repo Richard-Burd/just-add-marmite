@@ -51,14 +51,14 @@ const NNFMLessonOne = () => {
             scale: 1.8,
             textShadow: "0px 0px 8px rgb(117, 97, 90)",
             boxShadow: "0px 0px 8px rgb(117, 97, 90)",
-            color: "#ff2994",
+            color: "red",
             originX: 0,
           }}
           transition={{
             type: "spring",
             stiffness: 300,
           }}
-          whileTap={{ scale: 0.8 }}
+          whileTap={{ color: "blue" }}
         >
           <p className="border-2 border-yellow-900 p-2">
             This is another button
