@@ -5,8 +5,11 @@ import StyledModularComponent from "../components/StyledModularComponent";
 import HodgePodge from "../components/HodgePodge";
 import UCSDisclosure from "../components/UCSDisclosure";
 import UCSFMDropdown from "../components/UCSFMDropdown";
+import UCSFMDropdownTwo from "../components/UCSFMDropdownTwo";
+import UCSFMDropdownThree from "../components/UCSFMDropdownThree";
 import NNFMLessonOne from "../components/NNFMLessonOne";
 import NNFMLessonTwo from "../components/NNFMLessonTwo";
+import NNFMLessonThree from "../components/NNFMLessonThree";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -74,9 +77,15 @@ export default function Recipes({ recipes }) {
       <br></br>
       <UCSFMDropdown />
       <br></br>
+      <UCSFMDropdownTwo />
+      <br></br>
+      <UCSFMDropdownThree />
+      <br></br>
       <NNFMLessonOne />
       <br></br>
       <NNFMLessonTwo />
+      <br></br>
+      <NNFMLessonThree />
       <div className="bg-red-300">
         <div className="flex justify-center">This is text</div>
       </div>
