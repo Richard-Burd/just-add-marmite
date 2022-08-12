@@ -10,8 +10,6 @@ import UCSFMDropdownThree from "../components/UCSFMDropdownThree";
 import NNFMLessonOne from "../components/NNFMLessonOne";
 import NNFMLessonTwo from "../components/NNFMLessonTwo";
 import NNFMLessonThree from "../components/NNFMLessonThree";
-import Modal from "../components/Modal";
-import { useState } from "react";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -30,9 +28,6 @@ export async function getStaticProps() {
 }
 
 export default function Recipes({ recipes }) {
-  // https://youtu.be/RF78mP1AMQ0
-  const [showModal, setShowModal] = useState(true);
-
   console.log(recipes[0].fields.slug);
   return (
     <>
@@ -90,9 +85,7 @@ export default function Recipes({ recipes }) {
       <br></br>
       <NNFMLessonTwo />
       <br></br>
-      <Modal showModal={showModal} setShowModal={setShowModal}>
-        <NNFMLessonThree />
-      </Modal>
+      <NNFMLessonThree />
       <div className="bg-red-300">
         <div className="flex justify-center">This is text</div>
       </div>
