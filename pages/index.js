@@ -10,6 +10,7 @@ import UCSFMDropdownThree from "../components/UCSFMDropdownThree";
 import NNFMLessonOne from "../components/NNFMLessonOne";
 import NNFMLessonTwo from "../components/NNFMLessonTwo";
 import NNFMLessonThree from "../components/NNFMLessonThree";
+import Loader from "../components/Loader";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -89,6 +90,9 @@ export default function Recipes({ recipes }) {
       <div className="bg-red-300">
         <div className="flex justify-center">This is text</div>
       </div>
+      <br></br>
+      <Loader />
+      <br></br>
     </>
   );
 }
