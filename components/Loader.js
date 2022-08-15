@@ -39,14 +39,20 @@ const Loader = () => {
       <motion.div variants={loaderVariants} animate={animation}>
         <div className="loader"></div>
       </motion.div>
-      <div className="flex justify-center">
-        <button
-          className="bg-lime-500 font-bold p-4 rounded-2xl shadow-xl text-lime-900"
-          onClick={() => cycleAnimation()}
-        >
-          Cycle Animation
-        </button>
-      </div>
+      <motion.div
+        drag
+        dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+        dragElastic={0.4}
+      >
+        <div className="flex justify-center">
+          <button
+            className="bg-lime-500 font-bold p-4 rounded-2xl shadow-xl text-lime-900"
+            onClick={() => cycleAnimation()}
+          >
+            Cycle Animation or Drag me Around
+          </button>
+        </div>
+      </motion.div>
       <style jsx>{`
         .loader {
           width: 10px;
