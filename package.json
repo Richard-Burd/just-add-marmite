@@ -16,5 +16,9 @@
     "next": "^12.1.6",
     "react": "17.0.1",
     "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "contentful-cli": "^1.14.29",
+    "contentful-migration": "^4.9.4"
   }
 }
