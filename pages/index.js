@@ -11,6 +11,7 @@ import NNFMLessonOne from "../components/NNFMLessonOne";
 import NNFMLessonTwo from "../components/NNFMLessonTwo";
 import NNFMLessonThree from "../components/NNFMLessonThree";
 import Loader from "../components/Loader";
+import GitHubGistUser from "../components/GitHubGistUser";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -93,6 +94,7 @@ export default function Recipes({ recipes }) {
       <br></br>
       <Loader />
       <br></br>
+      <GitHubGistUser />
     </>
   );
 }
