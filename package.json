@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "contentful-cli": "^1.14.29",
-    "contentful-migration": "^4.9.4"
+    "contentful-migration": "^4.9.4",
+    "dotenv": "^16.0.2"
   }
 }
